@@ -10,7 +10,7 @@
 <body>
 
 <div class="header">
-    <h2>FAKULTAS VOKASI</h2>
+    <h2>FAKULTAS VOKASI 2</h2>
     <p>UNIVERSITAS AIRLANGGA</p>
     <hr>
 </div>
