@@ -74,8 +74,36 @@
             <a class="nav-link" href="{{ route('select-kota') }}">
                 <span class="menu-title">Kota</span>
                 <i class="mdi mdi-map-marker menu-icon"></i>
-             </a>
+            </a>
         </li>
 
+        <li class="nav-item {{ request()->routeIs('wilayah-ajax') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('wilayah-ajax') }}">
+                <span class="menu-title">Wilayah (AJAX)</span>
+                <i class="mdi mdi-map menu-icon"></i>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->routeIs('wilayah-axios') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('wilayah-axios') }}">
+                <span class="menu-title">Wilayah (Axios)</span>
+                <i class="mdi mdi-map-outline menu-icon"></i>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->routeIs('transaksi-ajax') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('transaksi-ajax') }}">
+                <span class="menu-title">Transaksi (AJAX)</span>
+                <i class="mdi mdi-cash-register menu-icon"></i>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->routeIs('transaksi-axios') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('transaksi-axios') }}">
+                <span class="menu-title">Transaksi (Axios)</span>
+                <i class="mdi mdi-credit-card-outline menu-icon"></i>
+            </a>
+        </li>
+        
     </ul>
 </nav>

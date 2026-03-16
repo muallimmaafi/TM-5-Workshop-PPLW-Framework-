@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\WilayahController;
+use App\Http\Controllers\TransaksiController;
 
 Route::get('/', function () {
     return view('landing');
@@ -135,6 +137,34 @@ Route::middleware('auth')->group(function () {
     Route::get('/select-kota', function () {
         return view('select-kota');
     })->name('select-kota');
+
+    Route::get('/wilayah-ajax', [WilayahController::class, 'ajaxPage'])->name('wilayah-ajax');
+
+    Route::get('/wilayah-axios', [WilayahController::class, 'axiosPage'])->name('wilayah-axios');
+
+    Route::get('/get-kota/{province_id}', [WilayahController::class, 'getKota']);
+    Route::get('/get-kecamatan/{city_id}', [WilayahController::class, 'getKecamatan']);
+    Route::get('/get-kelurahan/{district_id}', [WilayahController::class, 'getKelurahan']);
+
+    Route::get(
+        '/transaksi/ajax',
+        [TransaksiController::class, 'ajaxPage']
+    )->name('transaksi-ajax');
+
+    Route::get(
+        '/transaksi/axios',
+        [TransaksiController::class, 'axiosPage']
+    )->name('transaksi-axios');
+
+    Route::get(
+        '/get-barang/{kode}',
+        [TransaksiController::class, 'getBarang']
+    );
+
+    Route::post(
+        '/simpan-transaksi',
+        [TransaksiController::class, 'simpan']
+    );
 });
 
 require __DIR__ . '/auth.php';

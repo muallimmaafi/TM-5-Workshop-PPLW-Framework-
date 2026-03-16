@@ -4,7 +4,6 @@
 
 <div class="row">
 
-    <!-- CARD 1 -->
     <div class="col-md-6">
 
         <div class="card">
@@ -41,7 +40,6 @@
     </div>
 
 
-    <!-- CARD 2 -->
     <div class="col-md-6">
 
         <div class="card">
