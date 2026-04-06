@@ -13,6 +13,10 @@ use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\WilayahController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\VendorController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('landing');
@@ -165,6 +169,25 @@ Route::middleware('auth')->group(function () {
         '/simpan-transaksi',
         [TransaksiController::class, 'simpan']
     );
+
+    Route::get('/', [CustomerController::class, 'vendors']);
+    Route::get('/vendors/{id}/menus', [CustomerController::class, 'menus']);
+
+    Route::resource('vendors', VendorController::class);
+
+    Route::get('/vendors/{vendor}/menus', [MenuController::class, 'index'])->name('menus.index');
+    Route::get('/vendors/{vendor}/menus/create', [MenuController::class, 'create'])->name('menus.create');
+    Route::post('/vendors/{vendor}/menus', [MenuController::class, 'store'])->name('menus.store');
+    Route::get('/vendors/{vendor}/menus/{menu}/edit', [MenuController::class, 'edit'])->name('menus.edit');
+    Route::put('/vendors/{vendor}/menus/{menu}', [MenuController::class, 'update'])->name('menus.update');
+    Route::delete('/vendors/{vendor}/menus/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy');
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/vendor', [OrderController::class, 'selectVendor'])->name('orders.selectVendor');
+    Route::get('/orders/create/{vendor}', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+    Route::get('/orders/{id}/pay', [OrderController::class, 'pay'])->name('orders.pay');
+    Route::get('/orders/success/{id}', [OrderController::class, 'success'])->name('orders.success');
 });
 
 require __DIR__ . '/auth.php';
@@ -174,7 +197,7 @@ Route::get('/auth/google', function () {
 })->name('google.login');
 
 Route::get('/auth/google/callback', function () {
-    $googleUser = Socialite::driver('google')->stateless()->user();
+    $googleUser = Socialite::driver('google')->user();
 
     // cek apakah user sudah ada
     $user = User::where('id_google', $googleUser->id)->first();

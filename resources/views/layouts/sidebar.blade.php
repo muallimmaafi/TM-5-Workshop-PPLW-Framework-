@@ -104,6 +104,20 @@
                 <i class="mdi mdi-credit-card-outline menu-icon"></i>
             </a>
         </li>
-        
+
+        <li class="nav-item {{ request()->routeIs('vendors.index') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('vendors.index') }}">
+                <span class="menu-title">Vendor Kantin</span>
+                <i class="mdi mdi-store menu-icon"></i>
+            </a>
+        </li>
+
+        <li class="nav-item {{ request()->routeIs('orders.index') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('orders.index') }}">
+                <span class="menu-title">Pesanan</span>
+                <i class="mdi mdi-receipt menu-icon"></i>
+            </a>
+        </li>
+
     </ul>
 </nav>

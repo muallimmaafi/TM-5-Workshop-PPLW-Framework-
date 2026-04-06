@@ -115,8 +115,7 @@ var lightColor = getComputedStyle(document.body).getPropertyValue('--light');
           document.msExitFullscreen();
         }
       }
-    }) 
-
+    })
   
   });
 })(jQuery);

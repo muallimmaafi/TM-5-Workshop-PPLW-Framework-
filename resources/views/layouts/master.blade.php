@@ -42,6 +42,8 @@
 
     @stack('js-page')
 
+    @yield('scripts')
+
 </body>
 
 </html>

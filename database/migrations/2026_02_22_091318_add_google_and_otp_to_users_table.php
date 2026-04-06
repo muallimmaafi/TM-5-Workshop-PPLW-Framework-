@@ -9,9 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('id_google', 256)->nullable()->after('password'); // kolom id_google
-            $table->string('otp', 6)->nullable()->after('id_google'); // kolom otp
-            $table->string('email')->unique()->after('name')->change(); // pastikan email ada & unique
+            $table->string('id_google', 256)->nullable()->after('password');
+            $table->string('otp', 6)->nullable()->after('id_google');
         });
     }
 
